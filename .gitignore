@@ -1,0 +1,9 @@
+app/.env
+app/__pycache__
+
+app/test
+app/errors/__pycache__
+app/main/__pycache__
+app/post/__pycache__
+app/users/__pycache__
+instance
