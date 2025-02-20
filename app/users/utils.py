@@ -6,6 +6,7 @@ import smtplib
 from flask import current_app
 from dotenv import load_dotenv
 from pathlib import Path
+from email.mime.text import MIMEText
 
 def save_picture(form_picture):
     random = secrets.token_hex(8)
@@ -28,7 +29,7 @@ def send_reset_email(user):
     token = user.get_reset_token()
     receiver = user.email
     subject = "PASSWORD RESET"
-    messgae = f"""\
+    message = f"""\
 To reset your password 😶‍🌫️, visit the following link:🌚
 
 {url_for('users.reset_token', token=token, _external=True)}
@@ -37,9 +38,14 @@ To reset your password 😶‍🌫️, visit the following link:🌚
 
 If you did not make this request then simply ignore this email 🤣 and no changes will be made.
 """
-    text = f"Subject: {subject}\n\n{messgae}"
-    server = smtplib.SMTP("smtp.gmail.com")
+    msg = MIMEText(message, "plain", "utf-8")
+    msg["Subject"] = subject
+    msg["From"] = os.getenv('EMAIL')
+    msg["To"] = receiver
+    server = smtplib.SMTP("smtp.gmail.com",587)
     server.starttls()
     server.login(os.getenv('EMAIL'),os.getenv('PASS'))
-    server.sendmail(os.getenv('EMAIL'),receiver,text)
+    server.sendmail(os.getenv('EMAIL'),receiver,msg.as_string())
+    server.quit()
+    print("EMAIL SENT")
 
