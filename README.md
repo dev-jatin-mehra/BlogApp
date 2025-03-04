@@ -3,8 +3,9 @@
 A simple blog application built with Flask, SQLite, and SQLAlchemy as the ORM. It supports user authentication using PyJWT and utilizes Jinja templating for dynamic HTML rendering.
 
 ## Features
-- User authentication (JWT-based)
 - Create, edit, and delete blog posts
+- Update account: name_change , account_image, email, password, etc.
+- User authentication (JWT-based)
 - Error handling and structured routes
 - SQLite database with SQLAlchemy ORM
 - Templating with Jinja, HTML, and CSS
