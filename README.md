@@ -1,4 +1,4 @@
-# FLASK APP
+# BLOG APP (FLASK)
 
 # USE 
 - Clone the repository
