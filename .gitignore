@@ -1,4 +1,5 @@
 app/.env
+app/test/test_mail.py
 app/**/__pycache__/
 app/static/assets/b102986322bb1b29.jpg
 app/static/assets/b6e1c53325f88b74.png
